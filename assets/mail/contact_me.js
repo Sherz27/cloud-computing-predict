@@ -1,7 +1,5 @@
 $(function () {
-    $(
-        "#contactForm input,#contactForm textarea,#contactForm button"
-    ).jqBootstrapValidation({
+    $("#contactForm input,#contactForm textarea,#contactForm button").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function ($form, event, errors) {
             // additional error messages or events
@@ -24,7 +22,7 @@ $(function () {
             var json = {name: name, phone: phone, email: email, message: message}
             $.ajax({
                 // --- CHANGE THIS LINE TO YOUR OWN API GATEWAY  -------- 
-                url: "https://awlpjlpyzl.execute-api.eu-west-2.amazonaws.com/default/sheron-form-function",
+                url: "<YOUR_API_GATEWAY_ENDPOINT_URL>",
                 // ------------------------------------------------------  
                 type: "POST",
                 data: JSON.stringify(json),
@@ -34,13 +32,9 @@ $(function () {
                     console.log("Success")
                     $("#success").html("<div class='alert alert-success'>");
                     $("#success > .alert-success")
-                        .html(
-                            "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;"
-                        )
+                        .html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $("#success > .alert-success").append(
-                        "<strong>Your message has been sent. </strong>"
-                    );
+                    $("#success > .alert-success").append("<strong>Your message has been sent. </strong>");
                     $("#success > .alert-success").append("</div>");
                     //clear all fields
                     $("#contactForm").trigger("reset");
@@ -49,17 +43,9 @@ $(function () {
                     // Fail message
                     $("#success").html("<div class='alert alert-danger'>");
                     $("#success > .alert-danger")
-                        .html(
-                            "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;"
-                        )
+                        .html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $("#success > .alert-danger").append(
-                        $("<strong>").text(
-                            "Sorry " +
-                                firstName +
-                                ", it seems that my mail server is not responding. Please try again later!"
-                        )
-                    );
+                    $("#success > .alert-danger").append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
                     $("#success > .alert-danger").append("</div>");
                     //clear all fields
                     $("#contactForm").trigger("reset");
