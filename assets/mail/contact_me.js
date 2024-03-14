@@ -5,7 +5,7 @@ $(function () {
             // additional error messages or events
         },
         submitSuccess: function ($form, event) {
-            event.preventDefault(); // prevent default submit behaviour
+            event.preventDefault(); // prevent default submit behavior
             // get values from FORM
             console.log('Capturing Data')
             var name = $("input#name").val();
@@ -21,8 +21,8 @@ $(function () {
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             var json = {name: name, phone: phone, email: email, message: message}
             $.ajax({
-                // --- CHANGE THIS LINE TO YOUR OWN API GATEWAY  -------- 
-                url: "<YOUR_API_GATEWAY_ENDPOINT_URL>",
+                // --- REPLACE THIS LINE WITH YOUR AWS AMPLIFY ENDPOINT URL  -------- 
+                url: "https://main.dajjrrhheaglb.amplifyapp.com/",
                 // ------------------------------------------------------  
                 type: "POST",
                 data: JSON.stringify(json),
